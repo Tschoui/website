@@ -1,0 +1,5 @@
+name: website
+channels:
+  - conda-forge
+dependencies:
+  - nodejs=24

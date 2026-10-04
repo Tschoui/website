@@ -1,0 +1,17 @@
+# "Talks & awards", in the order shown. kind is the small label, link is optional (slides, video, event page).
+
+- kind: Invited talk
+  year: 2024
+  text: AI for Good Global Summit
+- kind: Invited talk
+  year: 2024
+  text: ELLIS Health Symposium on Machine Learning for Drug Discovery
+- kind: Award
+  year: 2024
+  text: Best paper, ELLIS ML4Molecules workshop, for Bio-xLSTM
+- kind: Award
+  year: 2024
+  text: AI for Good spotlight, ICLR DMLR workshop
+- kind: Award
+  year: 2024
+  text: Top Reviewer, NeurIPS

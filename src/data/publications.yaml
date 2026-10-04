@@ -1,0 +1,116 @@
+# Publications, newest first. The page keeps this order.
+#
+#   selected: true   shown under "Selected publications" (everything is in "All publications")
+#   authors          write yourself as "J. Schimunek" (add * for equal contribution); it is bolded
+#   label            short venue shown in the left column
+#   links            any of: paper, code, demo, slides, video
+#   badges           small highlighted notes, e.g. awards
+#
+# Every Monday a GitHub Action looks for new papers on Semantic Scholar, adds them to
+# the top of this file and opens a pull request. Papers you never want listed go in
+# publications-ignore.yaml.
+
+- id: moleculariq
+  title: "MolecularIQ: Characterizing Chemical Reasoning Capabilities Through Symbolic Verification on Molecular Graphs"
+  authors: [C. Bartmann*, J. Schimunek*, M. Ielanskyi, P. Seidl, G. Klambauer, S. Luukkonen]
+  venue: International Conference on Learning Representations (ICLR)
+  label: ICLR 2026
+  year: 2026
+  selected: true
+  links:
+    paper: https://arxiv.org/abs/2601.15279
+    code: https://github.com/ml-jku/moleculariq
+
+- id: base-editors
+  title: Machine learning-driven optimization of specific, compact, and efficient base editors via single-round diversification
+  authors: [M. Ielanskyi, M. Wang, L. Scott, L. Rieber, S. Merrett, J. Schimunek, A. Mayr, I. McDowell, G. Klambauer, T. Bowen]
+  venue: Nucleic Acids Research
+  label: Nucleic Acids Res. 2026
+  year: 2026
+  links:
+    paper: https://doi.org/10.1093/nar/gkag545
+
+- id: constraint-repair-kg
+  title: "Structure is the Signal: Graph Encodings and GNNs for Constraint Repair in Collaborative Knowledge Graphs"
+  authors: [M. Vázquez, K. Innerebner, A. Prock, G. Klambauer, E. Lex, J. Schimunek, A. Polleres]
+  venue: European Semantic Web Conference (ESWC)
+  label: ESWC 2026
+  year: 2026
+  links:
+    paper: https://doi.org/10.1007/978-3-032-25156-5_15
+
+- id: bio-xlstm
+  title: "Bio-xLSTM: Generative Modeling, Representation and In-Context Learning of Biological and Chemical Sequences"
+  authors: [N. Schmidinger, L. Schneckenreiter, P. Seidl, J. Schimunek, P.-J. Hoedt, J. Brandstetter, A. Mayr, S. Luukkonen, S. Hochreiter, G. Klambauer]
+  venue: International Conference on Learning Representations (ICLR)
+  label: ICLR 2025
+  year: 2025
+  selected: true
+  links:
+    paper: https://arxiv.org/abs/2411.04165
+    code: https://github.com/ml-jku/dna-xlstm
+  badges: [Best paper, ELLIS ML4Molecules 2024]
+
+- id: mhnfs-jcim
+  title: "MHNfs: Prompting In-Context Bioactivity Predictions for Low-Data Drug Discovery"
+  authors: [J. Schimunek, S. Luukkonen, G. Klambauer]
+  venue: Journal of Chemical Information and Modeling
+  label: J. Chem. Inf. Model. 2025
+  year: 2025
+  selected: true
+  links:
+    paper: https://pubs.acs.org/jcisd8/article/65/9/4243/3687041/MHNfs-Prompting-In-Context-Bioactivity-Predictions
+    code: https://github.com/ml-jku/MHNfs
+    demo: https://huggingface.co/spaces/ml-jku/mhnfs
+
+- id: few-shot-chapter
+  title: Few-Shot Learning in Drug Discovery
+  authors: [J. Schimunek, G. Klambauer]
+  venue: "Book chapter in Applied Artificial Intelligence for Drug Discovery, Springer Nature"
+  label: Book chapter 2025
+  year: 2025
+
+- id: sars-cov-2-community
+  title: A Community Effort in SARS-CoV-2 Drug Discovery
+  authors: [J. Schimunek, P. Seidl, K. Elez, et al.]
+  venue: Molecular Informatics
+  label: Mol. Inform. 2024
+  year: 2024
+  links:
+    paper: https://doi.org/10.1002/minf.202300262
+
+- id: autoregressive-activity
+  title: Autoregressive Activity Prediction for Low-Data Drug Discovery
+  authors: [J. Schimunek, L. Friedrich, D. Kuhn, G. Klambauer]
+  venue: "ICLR 2024 workshops: Practical ML for Low Resource Settings, and Data-centric Machine Learning Research (DMLR)"
+  label: ICLR 2024 workshops
+  year: 2024
+  selected: true
+  links:
+    paper: https://openreview.net/forum?id=eLg88qUVFT
+  badges: [AI for Good spotlight]
+
+- id: context-enriched
+  title: Context-enriched molecule representations improve few-shot drug discovery
+  authors: [J. Schimunek, P. Seidl, L. Friedrich, D. Kuhn, F. Rippmann, S. Hochreiter, G. Klambauer]
+  venue: International Conference on Learning Representations (ICLR)
+  label: ICLR 2023
+  year: 2023
+  selected: true
+  links:
+    paper: https://openreview.net/forum?id=XrMWUuEevr
+    code: https://github.com/ml-jku/MHNfs
+
+- id: embedding-few-shot-framework
+  title: A Generalized Framework for Embedding-Based Few-Shot Learning Methods in Drug Discovery
+  authors: [J. Schimunek, L. Friedrich, D. Kuhn, F. Rippmann, S. Hochreiter, G. Klambauer]
+  venue: ELLIS Machine Learning for Molecule Discovery Workshop
+  label: ELLIS ML4Molecules 2021
+  year: 2021
+
+- id: herg-interpretability
+  title: Comparative Assessment of Interpretability Methods of Deep Activity Models for hERG
+  authors: [J. Schimunek, L. Friedrich, D. Kuhn, F. Rippmann, S. Hochreiter, G. Klambauer]
+  venue: International Workshop on (Q)SAR in Environmental and Health Sciences
+  label: QSAR 2021
+  year: 2021

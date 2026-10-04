@@ -1,0 +1,45 @@
+name: Deploy to Strato
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: Upload over SFTP
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_DIR: ${{ vars.SFTP_DIR }}
+        run: |
+          if [ -z "$SFTP_HOST" ]; then
+            echo "::notice::SFTP secrets are not set yet, skipping the upload."
+            exit 0
+          fi
+          # The upload deletes remote files that are not in the build, so it must
+          # target the website's own folder, never the account root.
+          case "$SFTP_DIR" in
+            ""|"/"|"."|"~"|"./") echo "::error::Set the SFTP_DIR variable to the website's own folder."; exit 1 ;;
+          esac
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp --env-password -u "$SFTP_USER" "sftp://$SFTP_HOST" -e "
+            set sftp:auto-confirm yes;
+            set net:max-retries 3;
+            mirror --reverse --delete --verbose dist/ \"$SFTP_DIR\";
+            quit"

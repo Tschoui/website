@@ -1,0 +1,5 @@
+# Papers on Semantic Scholar that should never be added to the site.
+# The weekly publication check skips every title listed here (case and punctuation don't matter).
+
+- Large-scale ligand-based virtual screening for SARS-CoV-2 inhibitors using deep neural networks
+- "OutEffHop: A Principled Outlier-Efficient Attention Layer from Dense Associative Memory Models"

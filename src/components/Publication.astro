@@ -1,0 +1,46 @@
+---
+interface Props {
+  pub: {
+    title: string;
+    authors: string[];
+    venue?: string;
+    label: string;
+    links?: Record<string, string>;
+    badges?: string[];
+  };
+  showVenue?: boolean;
+}
+
+const { pub, showVenue = false } = Astro.props;
+
+const LINK_LABELS: Record<string, string> = {
+  paper: 'Paper',
+  code: 'Code',
+  demo: 'Demo',
+  slides: 'Slides',
+  video: 'Video',
+};
+
+const isMe = (author: string) => author.replace(/\*/g, '').trim() === 'J. Schimunek';
+const links = Object.entries(pub.links ?? {});
+const badges = pub.badges ?? [];
+---
+
+<li class="pub">
+  <div class="pub-label">{pub.label}</div>
+  <div class="pub-main">
+    <h3 class="pub-title">{pub.title}</h3>
+    <div class="pub-authors">
+      {pub.authors.map((author, i) => (
+        <>{i > 0 && ', '}{isMe(author) ? <strong>{author}</strong> : author}</>
+      ))}
+    </div>
+    {showVenue && pub.venue && <div class="pub-venue">{pub.venue}</div>}
+    {(links.length > 0 || badges.length > 0) && (
+      <div class="pub-links">
+        {links.map(([kind, url]) => <a href={url}>{LINK_LABELS[kind] ?? kind}</a>)}
+        {badges.map((badge) => <span class="badge">{badge}</span>)}
+      </div>
+    )}
+  </div>
+</li>

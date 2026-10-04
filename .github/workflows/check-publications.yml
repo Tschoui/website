@@ -1,0 +1,37 @@
+name: Check for new publications
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays, 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Look up Semantic Scholar
+        env:
+          S2_API_KEY: ${{ secrets.S2_API_KEY }}
+          REPORT_PATH: ${{ runner.temp }}/report.md
+        run: npm run check-publications
+
+      # Opens (or updates) a single PR when publications.yaml changed; does nothing otherwise.
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: new-publications
+          add-paths: src/data/publications.yaml
+          commit-message: Add new publications from Semantic Scholar
+          title: New publications found on Semantic Scholar
+          body-path: ${{ runner.temp }}/report.md
+          delete-branch: true

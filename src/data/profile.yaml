@@ -1,0 +1,66 @@
+# Everything about you that appears on the page. Edit freely.
+
+name: Johannes Schimunek
+short_name: J. Schimunek
+eyebrow: Machine learning for molecules
+intro: >-
+  Research Associate in the Computational and Biological Learning group at the
+  University of Cambridge. I build data-efficient models for small-molecule
+  discovery: few-shot prediction, generative modelling, and chemical reasoning models.
+
+# Pills under the intro. A CV pill is added automatically when public/cv.pdf exists.
+links:
+  - label: Google Scholar
+    url: https://scholar.google.com/citations?user=fnoF4y4AAAAJ
+  - label: GitHub
+    url: https://github.com/Tschoui
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/johannes-schimunek-a0689b108/
+  - label: ORCID
+    url: https://orcid.org/0000-0002-1372-8290
+
+photo_alt: Portrait of Johannes Schimunek leaning against a dark stone wall, looking into the sun
+
+model_card:
+  file: model-card.md · version 2026.09
+  rows:
+    - key: model
+      value: Johannes Schimunek, Research Associate
+    - key: deployed at
+      value: Computational and Biological Learning group, University of Cambridge, with José Miguel Hernández-Lobato
+    - key: intended use
+      value: Few-shot and in-context prediction for molecules, generative models for small molecules, and chemical reasoning models
+    - key: trained on
+      value: Mathematics and physics at the University of Augsburg. Doctorate in machine learning at JKU Linz (2025), supervised by Günter Klambauer and Sepp Hochreiter.
+    - key: earlier versions
+      value: Postdoc at JKU Linz. Maths and physics teacher in Munich. Data scientist in industry.
+    - key: known for
+      value: MHNfs, Bio-xLSTM, MolecularIQ
+
+# First-person bio shown when "Full text bio" is clicked.
+bio:
+  - >-
+    I work on machine learning for small-molecule discovery, with a focus on settings
+    where data is scarce: predicting what a molecule does when only a handful of
+    measurements exist. During my PhD I developed MHNfs, a few-shot model for
+    bioactivity prediction. Since then I have worked on generative models for chemical
+    and biological sequences, and on measuring how well language models reason about chemistry.
+  - >-
+    I joined the Computational and Biological Learning group in Cambridge in September
+    2026, working with José Miguel Hernández-Lobato. Before that I did my PhD and a
+    postdoc at the Institute for Machine Learning at JKU Linz with Günter Klambauer and
+    Sepp Hochreiter. I originally trained as a mathematics and physics teacher.
+
+# Third-person bio for organisers (copied by the "Copy bio" button).
+speaker_bio: >-
+  Johannes Schimunek is a Research Associate in the Computational and Biological
+  Learning group at the University of Cambridge, working with José Miguel
+  Hernández-Lobato on machine learning for small-molecule discovery when data is
+  scarce: few-shot bioactivity prediction, generative models for chemical and
+  biological sequences, and chemical reasoning in language models. Johannes completed
+  a PhD and a postdoc at the Institute for Machine Learning at JKU Linz with Günter
+  Klambauer and Sepp Hochreiter and developed MHNfs, a few-shot model for
+  bioactivity prediction.
+
+email: js3132@cam.ac.uk
+affiliation: Computational and Biological Learning · Department of Engineering · University of Cambridge

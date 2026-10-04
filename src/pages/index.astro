@@ -1,0 +1,176 @@
+---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Publication from '../components/Publication.astro';
+import portrait from '../assets/portrait.jpg';
+import profile from '../data/profile.yaml';
+import publications from '../data/publications.yaml';
+import talks from '../data/talks.yaml';
+import community from '../data/community.yaml';
+
+// The CV link only appears once public/cv.pdf exists.
+const hasCv = existsSync(join(process.cwd(), 'public', 'cv.pdf'));
+const links = hasCv ? [...profile.links, { label: 'CV (PDF)', url: '/cv.pdf' }] : profile.links;
+
+const selected = publications.filter((p: any) => p.selected);
+const hasEqualContribution = publications.some((p: any) => p.authors.some((a: string) => a.includes('*')));
+---
+
+<Base>
+  <Header />
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <div class="eyebrow">{profile.eyebrow}</div>
+        <h1>{profile.name.split(' ')[0]}<br />{profile.name.split(' ').slice(1).join(' ')}</h1>
+        <p class="lede">{profile.intro}</p>
+        <div class="pills">
+          {links.map((link: any) => <a class="pill" href={link.url}>{link.label}</a>)}
+        </div>
+      </div>
+      <div class="hero-photo">
+        <Picture
+          src={portrait}
+          alt={profile.photo_alt}
+          formats={['avif', 'webp']}
+          widths={[440, 880]}
+          sizes="(min-width: 1000px) 440px, calc(100vw - 40px)"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-label">About</h2>
+      <div class="section-body">
+        <div class="card" data-view="card">
+          <div class="card-head">
+            <span class="card-file">{profile.model_card.file}</span>
+            <button type="button" class="btn" data-show="bio">Full text bio</button>
+          </div>
+          <dl class="card-rows">
+            {profile.model_card.rows.map((row: any) => (
+              <div class="card-row">
+                <dt>{row.key}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div class="bio" data-view="bio" hidden>
+          {profile.bio.map((paragraph: string) => <p>{paragraph}</p>)}
+          <button type="button" class="btn" data-show="card">Back to model card</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <h2 class="section-label">Selected publications</h2>
+      <div class="section-body">
+        <ol class="pub-list">
+          {selected.map((pub: any) => <Publication pub={pub} />)}
+        </ol>
+        <details class="all-pubs">
+          <summary class="pill">
+            <span class="when-closed">Show all publications ({publications.length})</span>
+            <span class="when-open">Hide full list</span>
+          </summary>
+          <ol class="pub-list">
+            {publications.map((pub: any) => <Publication pub={pub} showVenue />)}
+          </ol>
+        </details>
+        <div class="pub-foot">
+          <a href={profile.links.find((l: any) => l.label === 'Google Scholar')?.url}>Google Scholar profile →</a>
+          {hasEqualContribution && <span>* equal contribution</span>}
+        </div>
+      </div>
+    </section>
+
+    <section id="talks" class="section">
+      <h2 class="section-label">Talks &amp; awards</h2>
+      <div class="section-body">
+        <ul class="entries">
+          {talks.map((t: any) => (
+            <li class="entry">
+              <div class="entry-key">{t.kind} · {t.year}</div>
+              <div class="entry-val">{t.link ? <a href={t.link}>{t.text}</a> : t.text}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="community" class="section">
+      <h2 class="section-label">Community &amp; teaching</h2>
+      <div class="section-body">
+        <ul class="entries">
+          {community.map((c: any) => (
+            <li class="entry">
+              <div class="entry-key">{c.role}</div>
+              <div class="entry-val">{c.text}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="organisers" class="section">
+      <h2 class="section-label">For organisers</h2>
+      <div class="section-body">
+        <div class="card kit">
+          <p class="kit-note">Introducing me at an event? Feel free to use this bio and photo.</p>
+          <p class="kit-bio" id="speaker-bio">{profile.speaker_bio}</p>
+          <div class="kit-actions">
+            <button type="button" class="btn" data-copy="speaker-bio">Copy bio</button>
+            <a class="btn" href="/johannes-schimunek.jpg" download>Download photo (JPG)</a>
+            {hasCv && <a class="btn" href="/cv.pdf">CV (PDF)</a>}
+            <span class="copy-status" role="status"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <h2>Get in touch</h2>
+    <div class="footer-email"><a href={`mailto:${profile.email}`}>{profile.email}</a></div>
+    <div class="footer-meta">{profile.affiliation}</div>
+    <div class="footer-legal">
+      <span>© {new Date().getFullYear()} {profile.name}</span>
+      <a href="/impressum/">Impressum &amp; privacy</a>
+    </div>
+  </footer>
+</Base>
+
+<script>
+  // Model card <-> full text bio
+  document.querySelectorAll<HTMLButtonElement>('[data-show]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.show;
+      document.querySelectorAll<HTMLElement>('[data-view]').forEach((view) => {
+        view.hidden = view.dataset.view !== target;
+      });
+      document.querySelector<HTMLButtonElement>(`[data-view="${target}"] [data-show]`)?.focus();
+    });
+  });
+
+  // Organiser kit: copy the bio
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((button) => {
+    const status = button.parentElement?.querySelector('.copy-status');
+    button.addEventListener('click', async () => {
+      const text = document.getElementById(button.dataset.copy!)?.textContent?.trim() ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+        if (status) status.textContent = 'Copied to clipboard';
+      } catch {
+        if (status) status.textContent = 'Copy failed, please select the text instead';
+      }
+      setTimeout(() => { if (status) status.textContent = ''; }, 3000);
+    });
+  });
+</script>

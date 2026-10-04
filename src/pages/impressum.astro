@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import profile from '../data/profile.yaml';
+
+// TODO before going live: a postal address is required for the Impressum.
+const address = ['[STREET AND NUMBER]', '[POSTCODE AND CITY]', '[COUNTRY]'];
+
+// Check these against your STRATO contract.
+const host = {
+  name: 'STRATO',
+  address: 'Otto-Ostrowski-Straße 7, 10249 Berlin, Germany',
+};
+---
+
+<Base title={`Impressum & privacy · ${profile.name}`} description={`Legal notice and privacy policy for ${profile.name}'s website.`}>
+  <Header />
+
+  <main class="prose">
+    <h1>Impressum &amp; privacy</h1>
+
+    <h2>Legal notice (Impressum)</h2>
+    <p>Information according to § 5 DDG</p>
+    <address>
+      {profile.name}<br />
+      {address.map((line) => <>{line}<br /></>)}
+      Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+    </address>
+    <p>Responsible for the content according to § 18 (2) MStV: {profile.name}, address as above.</p>
+
+    <h2>Privacy policy (Datenschutzerklärung)</h2>
+
+    <h3>Controller</h3>
+    <p>{profile.name}, contact details as above.</p>
+
+    <h3>Hosting and server log files</h3>
+    <p>
+      This website is hosted by {host.name}, {host.address}. When you open a page, the web
+      server automatically records technical information in log files: your IP address, the
+      date and time of the request, the page requested, the referring page, and your browser
+      and operating system. This is needed to deliver the website and keep it secure, which is
+      a legitimate interest under Art. 6 (1) (f) GDPR. The hosting provider processes this data
+      on my behalf and deletes the log files after a short period.
+    </p>
+
+    <h3>No cookies, tracking or third-party content</h3>
+    <p>
+      This website sets no cookies, uses no analytics or tracking, and loads nothing from third
+      parties. Fonts and images are served from this server. Links to other websites, such as
+      Google Scholar or GitHub, only contact those services when you click them.
+    </p>
+
+    <h3>Email</h3>
+    <p>If you email me, I use your address and message only to reply to you.</p>
+
+    <h3>Your rights</h3>
+    <p>
+      You have the right to access, correct or delete your personal data, to restrict or object
+      to its processing, and to data portability (Art. 15 to 21 GDPR). You can also lodge a
+      complaint with a data protection supervisory authority.
+    </p>
+
+    <p><a href="/">← Back to the homepage</a></p>
+  </main>
+</Base>
