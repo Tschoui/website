@@ -9,11 +9,6 @@ const address = [
   'Cambridge CB2 1PZ',
   'United Kingdom',
 ];
-
-const host = {
-  name: 'STRATO GmbH',
-  address: 'Otto-Ostrowski-Straße 7, 10249 Berlin, Germany',
-};
 ---
 
 <Base title={`Impressum & privacy · ${profile.name}`} description={`Legal notice and privacy policy for ${profile.name}'s website.`}>
@@ -36,21 +31,23 @@ const host = {
     <h3>Controller</h3>
     <p>{profile.name}, contact details as above.</p>
 
-    <h3>Hosting and server log files</h3>
+    <h3>Hosting</h3>
     <p>
-      This website is hosted by {host.name}, {host.address}. When you open a page, the web
-      server automatically records technical information in log files: your IP address, the
-      date and time of the request, the page requested, the referring page, and your browser
-      and operating system. This is needed to deliver the website and keep it secure, which is
-      a legitimate interest under Art. 6 (1) (f) GDPR. The hosting provider processes this data
-      on my behalf and deletes the log files after a short period.
+      This website is hosted on GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr.
+      Street, San Francisco, CA 94107, USA. When you open a page, GitHub processes your IP address
+      and technical details of the request, such as the date and time, the page requested and your
+      browser, in order to deliver the website and protect it against attacks. This is a legitimate
+      interest under Art. 6 (1) (f) GDPR. The data may be processed in the USA. GitHub is certified
+      under the EU-U.S. Data Privacy Framework, for which the European Commission has issued an
+      adequacy decision (Art. 45 GDPR). Details are in
+      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.
     </p>
 
     <h3>No cookies, tracking or third-party content</h3>
     <p>
-      This website sets no cookies, uses no analytics or tracking, and loads nothing from third
-      parties. Fonts and images are served from this server. Links to other websites, such as
-      Google Scholar or GitHub, only contact those services when you click them.
+      This website sets no cookies, uses no analytics or tracking, and loads nothing from other
+      services. Fonts and images are delivered together with the website. Links to other websites,
+      such as Google Scholar or LinkedIn, only contact those services when you click them.
     </p>
 
     <h3>Email</h3>

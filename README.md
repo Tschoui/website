@@ -34,20 +34,18 @@ npm run dev                           # http://localhost:4321, reloads on save
 npm run build                         # writes the finished site to dist/
 ```
 
-## Deploying to Strato
+## Deploying
 
-`.github/workflows/deploy.yml` builds the site on every push to `main` and uploads `dist/` over SFTP.
-It skips the upload until these are set in the GitHub repo (Settings → Secrets and variables → Actions):
+`.github/workflows/pages.yml` builds the site on every push to `main` and publishes it on GitHub Pages
+(Settings → Pages: source "GitHub Actions", custom domain `johannes-schimunek.de`, "Enforce HTTPS").
 
-| Name | Kind | Value |
+The domain is registered at Strato; its DNS records point to GitHub Pages:
+
+| Host | Type | Value |
 | --- | --- | --- |
-| `SFTP_HOST` | secret | SFTP server from the Strato panel (usually `ssh.strato.de`) |
-| `SFTP_USER` | secret | SFTP user name (at Strato usually your domain) |
-| `SFTP_PASSWORD` | secret | SFTP password |
-| `SFTP_DIR` | variable | Folder the domain points to: `website` |
-
-The upload deletes remote files in `SFTP_DIR` that are not part of the build, so `SFTP_DIR` must be the
-site's own folder. The workflow refuses to run with an empty or root folder.
+| `johannes-schimunek.de` | A | `185.199.108.153` (GitHub lists `.109`, `.110`, `.111` as well) |
+| `johannes-schimunek.de` | AAAA | `2606:50c0:8000::153` |
+| `www` | CNAME | `tschoui.github.io` |
 
 ## Publication updates
 
