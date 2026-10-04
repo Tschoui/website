@@ -3,12 +3,15 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import profile from '../data/profile.yaml';
 
-// TODO before going live: a postal address is required for the Impressum.
-const address = ['[STREET AND NUMBER]', '[POSTCODE AND CITY]', '[COUNTRY]'];
+const address = [
+  'Department of Engineering, University of Cambridge',
+  'Trumpington Street',
+  'Cambridge CB2 1PZ',
+  'United Kingdom',
+];
 
-// Check these against your STRATO contract.
 const host = {
-  name: 'STRATO',
+  name: 'STRATO GmbH',
   address: 'Otto-Ostrowski-Straße 7, 10249 Berlin, Germany',
 };
 ---
