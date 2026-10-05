@@ -10,6 +10,17 @@
 # the top of this file and opens a pull request. Papers you never want listed go in
 # publications-ignore.yaml.
 
+
+# New from Semantic Scholar: check venue, label and authors
+- id: measuring-ai-progress-in-drug
+  title: "Measuring AI Progress in Drug Discovery: A Reproducible Leaderboard for the Tox21 Challenge"
+  authors: [A. Ebner, C. Bartmann, S. Topf, S. Luukkonen, J. Schimunek, G. Klambauer]
+  venue: arXiv preprint
+  label: arXiv 2025
+  year: 2025
+  selected: false
+  links:
+    paper: https://arxiv.org/abs/2511.14744
 - id: moleculariq
   title: "MolecularIQ: Characterizing Chemical Reasoning Capabilities Through Symbolic Verification on Molecular Graphs"
   authors: [C. Bartmann*, J. Schimunek*, M. Ielanskyi, P. Seidl, G. Klambauer, S. Luukkonen]
